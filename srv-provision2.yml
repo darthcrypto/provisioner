@@ -1,0 +1,13 @@
+---
+- hosts: '{{ target }}'
+  remote_user: root
+
+  tasks:
+
+  - name: yum install srv
+    command: yum srv select 1.2.0 -y
+
+  - name: change root password
+    user: 
+        name: root 
+        password: 0U0zBcasW2fis

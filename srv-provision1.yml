@@ -1,0 +1,24 @@
+--- 
+- hosts: '{{ target }}'
+  remote_user: root
+ 
+  tasks:
+   
+   - name: make julio bundles directory
+     command: mkdir -p /opt/julio/bundles/data
+   #  file: 
+    #   path: /opt/julio/bundles/data
+     #  state: directory
+     # mode: 755
+
+   - name: copy data bundle
+     copy: 
+       src: /etc/ansible/files/srv-provisioner/wut.zip
+       dest: /opt/julio/bundles/data/wut.zip
+       owner: root
+       group: root
+       mode: 755
+
+   - name: run install
+     shell: install.sh
+   
